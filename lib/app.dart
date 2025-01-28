@@ -13,7 +13,6 @@ class TaskManagerApp extends StatelessWidget {
   const TaskManagerApp({super.key});
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

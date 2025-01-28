@@ -6,6 +6,7 @@ import 'package:task_manager_app/ui/widgets/screen_background.dart';
 
 import '../widgets/app_logo.dart';
 
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 

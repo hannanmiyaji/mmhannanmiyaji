@@ -32,6 +32,7 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
           _selectedIndex = index;
           setState(() {});
         },
+
         destinations: [
           NavigationDestination(
               icon: Icon(Icons.new_label_outlined), label: 'New Task'),

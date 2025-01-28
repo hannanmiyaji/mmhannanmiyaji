@@ -57,6 +57,7 @@ class TaskItemWidget extends StatelessWidget {
     );
   }
 
+
   Color _getStatusColor(String status) {
     if (status == 'New') {
       return Colors.blue;

@@ -18,6 +18,7 @@ class NetworkResponse {
     this.errorMessage = 'Something went wrong',
   });
 }
+
 class NetworkCaller {
   static Future<NetworkResponse> getRequest(
       {required String url, Map<String, dynamic>? params}) async {

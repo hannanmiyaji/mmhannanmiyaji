@@ -98,6 +98,7 @@ class _ForgotPasswordVerifyOtpScreenState
     );
   }
 
+
   Widget _buildSignUpSection() {
     return RichText(
       text: TextSpan(
