@@ -105,7 +105,6 @@ class _NewTaskListScreenState extends State<NewTaskListScreen> {
       ),
     );
   }
-
   Future<void> _getTaskCountByStatus() async {
     _getTaskCountByStatusInProgress = true;
     setState(() {});

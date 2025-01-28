@@ -198,7 +198,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-
   @override
   void dispose() {
     _firstnameTEController.dispose();

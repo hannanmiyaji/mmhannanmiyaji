@@ -10,7 +10,6 @@ class CompletedTaskListScreen extends StatefulWidget {
       _CompletedTaskListScreenState();
 }
 
-
 class _CompletedTaskListScreenState extends State<CompletedTaskListScreen> {
   @override
   Widget build(BuildContext context) {

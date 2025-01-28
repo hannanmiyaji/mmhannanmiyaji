@@ -9,6 +9,7 @@ class TaskStatusSummaryCounterWidget extends StatelessWidget {
 
   final String count;
   final String title;
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
