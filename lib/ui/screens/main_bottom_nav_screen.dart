@@ -1,6 +1,4 @@
-
 import 'package:flutter/material.dart';
-
 import 'package:task_manager_app/ui/screens/cancelled_task_list_screen.dart';
 import 'package:task_manager_app/ui/screens/completed_task_list_screen.dart';
 import 'package:task_manager_app/ui/screens/new_task_list_screen.dart';
@@ -30,17 +28,21 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
       body: _screen[_selectedIndex],
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,
-        onDestinationSelected:(int index){
+        onDestinationSelected: (int index) {
           _selectedIndex = index;
           setState(() {});
-        } ,
+        },
+
         destinations: [
-          NavigationDestination(icon: Icon(Icons.new_label_outlined), label: 'New Task'),
+          NavigationDestination(
+              icon: Icon(Icons.new_label_outlined), label: 'New Task'),
           NavigationDestination(icon: Icon(Icons.refresh), label: 'Progress'),
-          NavigationDestination(icon: Icon(Icons.done_outline_outlined), label: 'Completed'),
-          NavigationDestination(icon: Icon(Icons.cancel_outlined), label: 'Cancelled'),
-        ],),
+          NavigationDestination(
+              icon: Icon(Icons.done_outline_outlined), label: 'Completed'),
+          NavigationDestination(
+              icon: Icon(Icons.cancel_outlined), label: 'Cancelled'),
+        ],
+      ),
     );
   }
 }
-

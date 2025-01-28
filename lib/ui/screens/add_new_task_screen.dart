@@ -7,15 +7,15 @@ class AddNewTaskScreen extends StatefulWidget {
 
   static const String name = '/add-new-task';
 
-
   @override
   State<AddNewTaskScreen> createState() => _AddNewTaskScreenState();
 }
 
-class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
 
+class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
   final TextEditingController _titleTEController = TextEditingController();
-  final TextEditingController _descriptionTEController = TextEditingController();
+  final TextEditingController _descriptionTEController =
+      TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -34,8 +34,13 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 32),
-                  Text('Add new task',style: textTheme.titleLarge,),
-                  const SizedBox(height: 16,),
+                  Text(
+                    'Add new task',
+                    style: textTheme.titleLarge,
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
                   TextFormField(
                     controller: _titleTEController,
                     decoration: InputDecoration(
@@ -46,14 +51,14 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
                   TextFormField(
                     controller: _descriptionTEController,
                     maxLines: 8,
-                    decoration: InputDecoration(
-                        hintText: 'Description'
-                    ),
+                    decoration: InputDecoration(hintText: 'Description'),
                   ),
                   SizedBox(height: 12),
                   ElevatedButton(
                     onPressed: () {},
-                    child: Icon(Icons.arrow_circle_right_outlined,),
+                    child: Icon(
+                      Icons.arrow_circle_right_outlined,
+                    ),
                   ),
                 ],
               ),
@@ -63,6 +68,7 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
       ),
     );
   }
+
   @override
   void dispose() {
     _titleTEController.dispose();
@@ -70,4 +76,3 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
     super.dispose();
   }
 }
-

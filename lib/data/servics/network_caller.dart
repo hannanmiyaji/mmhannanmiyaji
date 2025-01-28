@@ -1,9 +1,9 @@
-
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:task_manager_app/app.dart';
 import 'package:task_manager_app/ui/controllers/auth_controller.dart';
+import 'package:task_manager_app/ui/screens/sign_in_screen.dart';
 
 class NetworkResponse {
   final int statusCode;
@@ -25,9 +25,8 @@ class NetworkCaller {
     try {
       Uri uri = Uri.parse(url);
       debugPrint('Uri => $url');
-      Response response = await get(uri, headers: {
-        'token': AuthController.accessToken ?? ''
-      });
+      Response response =
+          await get(uri, headers: {'token': AuthController.accessToken ?? ''});
       debugPrint('Response Code => ${response.statusCode}');
       debugPrint('Response Data => ${response.body}');
 
@@ -37,6 +36,10 @@ class NetworkCaller {
             isSuccess: true,
             statusCode: response.statusCode,
             responseDate: decodedResponse);
+      } else if (response.statusCode == 401) {
+        await _logout();
+        return NetworkResponse(
+            isSuccess: false, statusCode: response.statusCode);
       } else {
         return NetworkResponse(
             isSuccess: false, statusCode: response.statusCode);
@@ -68,12 +71,14 @@ class NetworkCaller {
             isSuccess: true,
             statusCode: response.statusCode,
             responseDate: decodedResponse);
-      }else{
+      } else if (response.statusCode == 401) {
+        await _logout();
+        return NetworkResponse(
+            isSuccess: false, statusCode: response.statusCode);
+      } else {
         return NetworkResponse(
             isSuccess: false, statusCode: response.statusCode);
       }
-
-
     } catch (e) {
       return NetworkResponse(
         isSuccess: false,
@@ -81,5 +86,14 @@ class NetworkCaller {
         errorMessage: e.toString(),
       );
     }
+  }
+
+  static Future<void> _logout() async {
+    await AuthController.clearUserData();
+
+    Navigator.pushNamedAndRemoveUntil(
+        TaskManagerApp.navigatorKey.currentContext!,
+        SignInScreen.name,
+        (_) => false);
   }
 }

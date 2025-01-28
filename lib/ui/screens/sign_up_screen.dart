@@ -1,9 +1,9 @@
-
 import 'dart:ui';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:task_manager_app/data/servics/network_caller.dart';
+import 'package:task_manager_app/ui/utils/app_colors..dart';
 import 'package:task_manager_app/ui/widgets/snack_bar_message.dart';
 
 import '../../data/utils/urls.dart';
@@ -103,7 +103,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       if (value?.trim().isEmpty ?? true) {
                         return 'Enter your Password';
                       }
-                      if (value!.length < 6 ){
+                      if (value!.length < 6) {
                         return 'Enter a password more than 6 letters';
                       }
                       return null;
@@ -134,7 +134,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
     );
   }
-
 
   void _onTapSignUpButton() {
     if (_formKey.currentState!.validate()) {
@@ -167,13 +166,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
     }
   }
 
-  void _clearTextFields(){
+  void _clearTextFields() {
     _emailTEController.clear();
     _firstnameTEController.clear();
     _lastnameTEController.clear();
     _mobileTEController.clear();
     _passwordTEController.clear();
-
   }
 
   Widget _buildSignInSection() {
@@ -200,6 +198,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
+
   @override
   void dispose() {
     _firstnameTEController.dispose();
@@ -210,5 +209,3 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.dispose();
   }
 }
-
- 

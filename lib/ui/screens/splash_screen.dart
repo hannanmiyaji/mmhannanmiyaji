@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:task_manager_app/ui/controllers/auth_controller.dart';
 import 'package:task_manager_app/ui/screens/main_bottom_nav_screen.dart';
@@ -7,6 +5,7 @@ import 'package:task_manager_app/ui/screens/sign_in_screen.dart';
 import 'package:task_manager_app/ui/widgets/screen_background.dart';
 
 import '../widgets/app_logo.dart';
+
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -18,19 +17,18 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
   void initState() {
     super.initState();
     moveToNextScreen();
   }
 
-  Future<void>moveToNextScreen() async {
+  Future<void> moveToNextScreen() async {
     await Future.delayed(Duration(seconds: 2));
     bool isUserLoggedIn = await AuthController.isUserLoggedIn();
-    if(isUserLoggedIn) {
+    if (isUserLoggedIn) {
       Navigator.pushReplacementNamed(context, MainBottomNavScreen.name);
-    }else {
+    } else {
       Navigator.pushReplacementNamed(context, SignInScreen.name);
     }
   }
@@ -42,8 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Center(
           child: AppLogo(),
         ),
-      ) ,
+      ),
     );
   }
 }
-

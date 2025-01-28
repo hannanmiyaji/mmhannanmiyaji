@@ -1,9 +1,8 @@
-
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:task_manager_app/ui/screens/forgot_password_verify_otp_screen.dart';
 import 'package:task_manager_app/ui/screens/sign_up_screen.dart';
+import 'package:task_manager_app/ui/utils/app_colors..dart';
 import 'package:task_manager_app/ui/widgets/screen_background.dart';
 
 class ForgotPasswordVerifyEmailScreen extends StatefulWidget {
@@ -12,11 +11,12 @@ class ForgotPasswordVerifyEmailScreen extends StatefulWidget {
   static const String name = '/forgot-password/verify-email';
 
   @override
-  State<ForgotPasswordVerifyEmailScreen> createState() => _ForgotPasswordVerifyEmailScreenState();
+  State<ForgotPasswordVerifyEmailScreen> createState() =>
+      _ForgotPasswordVerifyEmailScreenState();
 }
 
-class _ForgotPasswordVerifyEmailScreenState extends State<ForgotPasswordVerifyEmailScreen> {
-
+class _ForgotPasswordVerifyEmailScreenState
+    extends State<ForgotPasswordVerifyEmailScreen> {
   final TextEditingController _emailTEController = TextEditingController();
   final TextEditingController _passwordTEController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -29,7 +29,7 @@ class _ForgotPasswordVerifyEmailScreenState extends State<ForgotPasswordVerifyEm
       body: ScreenBackground(
         child: SingleChildScrollView(
           child: Padding(
-            padding:  EdgeInsets.all(16.0),
+            padding: EdgeInsets.all(16.0),
             child: Form(
               key: _formKey,
               child: Column(
@@ -40,10 +40,10 @@ class _ForgotPasswordVerifyEmailScreenState extends State<ForgotPasswordVerifyEm
                   ),
                   Text('Your Email Address', style: textTheme.titleLarge),
                   const SizedBox(height: 16),
-                  Text('A 6 digits of OTP will be sent to your email address',
-                    style:textTheme.titleSmall,
+                  Text(
+                    'A 6 digits of OTP will be sent to your email address',
+                    style: textTheme.titleSmall,
                   ),
-
                   SizedBox(height: 16),
                   TextFormField(
                     controller: _emailTEController,
@@ -56,7 +56,8 @@ class _ForgotPasswordVerifyEmailScreenState extends State<ForgotPasswordVerifyEm
                   const SizedBox(height: 24),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, ForgotPasswordVerifyOtpScreen.name);
+                      Navigator.pushNamed(
+                          context, ForgotPasswordVerifyOtpScreen.name);
                     },
                     child: Icon(
                       Icons.arrow_circle_right_outlined,
@@ -68,8 +69,7 @@ class _ForgotPasswordVerifyEmailScreenState extends State<ForgotPasswordVerifyEm
                   Center(
                     child: Column(
                       children: [
-                        Center(
-                        ),
+                        Center(),
                         _buildSignUpSection(),
                       ],
                     ),
@@ -97,14 +97,17 @@ class _ForgotPasswordVerifyEmailScreenState extends State<ForgotPasswordVerifyEm
             style: TextStyle(
               color: AppColors.themeColor,
             ),
-            recognizer: TapGestureRecognizer()..onTap = (){
-              Navigator.pushNamed(context, SignUpScreen.name);
-            },
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                Navigator.pushNamed(context, SignUpScreen.name);
+              },
           ),
         ],
       ),
     );
   }
+
+
   @override
   void dispose() {
     _emailTEController.dispose();

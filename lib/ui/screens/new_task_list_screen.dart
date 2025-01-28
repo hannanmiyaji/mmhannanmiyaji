@@ -106,11 +106,25 @@ class _NewTaskListScreenState extends State<NewTaskListScreen> {
     );
   }
 
+  Future<void> _getTaskCountByStatus() async {
+    _getTaskCountByStatusInProgress = true;
+    setState(() {});
+    final NetworkResponse response =
+    await NetworkCaller.getRequest(url: Urls.taskCountByStatusUrl);
+    if (response.isSuccess) {
+      taskCountByStatusModel =
+          TaskCountByStatusModel.fromJson(response.responseDate!);
+    } else {
+      showSnackBarMessage(context, response.errorMessage);
+    }
+    _getTaskCountByStatusInProgress = false;
+    setState(() {});
+  }
+
   Future<void> _getNewTaskList() async {
     _getNewTaskListInProgress = true;
 
     setState(() {});
-
     final NetworkResponse response =
         await NetworkCaller.getRequest(url: Urls.taskListByStatusUrl('New'));
 
@@ -122,6 +136,4 @@ class _NewTaskListScreenState extends State<NewTaskListScreen> {
     _getNewTaskListInProgress = false;
     setState(() {});
   }
-
-
 }

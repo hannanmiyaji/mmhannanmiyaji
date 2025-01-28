@@ -1,4 +1,3 @@
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:task_manager_app/data/models/user_model.dart';
@@ -8,6 +7,7 @@ import 'package:task_manager_app/ui/controllers/auth_controller.dart';
 import 'package:task_manager_app/ui/screens/forgot_password_verify_email_screen.dart';
 import 'package:task_manager_app/ui/screens/main_bottom_nav_screen.dart';
 import 'package:task_manager_app/ui/screens/sign_up_screen.dart';
+import 'package:task_manager_app/ui/utils/app_colors..dart';
 import 'package:task_manager_app/ui/widgets/snack_bar_message.dart';
 
 import '../widgets/centered_circular_proress_indicator.dart';
@@ -77,7 +77,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   const SizedBox(height: 24),
                   Visibility(
                     visible: _signInProgress == false,
-                    replacement:const CenteredCircularProgressIndicator(),
+                    replacement: const CenteredCircularProgressIndicator(),
                     child: ElevatedButton(
                       onPressed: _onTapSignInButton,
                       child: Icon(
@@ -127,7 +127,7 @@ class _SignInScreenState extends State<SignInScreen> {
       "password": _passwordTEController.text,
     };
     final NetworkResponse response =
-    await NetworkCaller.postRequest(url: Urls.loginUrl, body: requestBody);
+        await NetworkCaller.postRequest(url: Urls.loginUrl, body: requestBody);
 
     if (response.isSuccess) {
       String token = response.responseDate!['token'];
@@ -137,7 +137,7 @@ class _SignInScreenState extends State<SignInScreen> {
     } else {
       _signInProgress = false;
       setState(() {});
-      if(response.statusCode == 401){
+      if (response.statusCode == 401) {
         showSnackBarMessage(context, 'Email/Password is invalid! Try again');
       }
       showSnackBarMessage(context, response.errorMessage);
@@ -168,6 +168,7 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 
+
   @override
   void dispose() {
     _emailTEController.dispose();
@@ -175,5 +176,3 @@ class _SignInScreenState extends State<SignInScreen> {
     super.dispose();
   }
 }
-
-    

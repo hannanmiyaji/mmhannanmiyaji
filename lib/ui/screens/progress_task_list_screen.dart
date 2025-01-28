@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:task_manager_app/ui/widgets/screen_background.dart';
 import 'package:task_manager_app/ui/widgets/task_item_widget.dart';
@@ -16,6 +15,7 @@ class _ProgressTaskListScreenState extends State<ProgressTaskListScreen> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
+
     return Scaffold(
       appBar: TMAppBar(),
       body: ScreenBackground(
@@ -31,8 +31,20 @@ class _ProgressTaskListScreenState extends State<ProgressTaskListScreen> {
     return ListView.builder(
       itemCount: 10,
       itemBuilder: (context, index) {
-       // return TaskItemWidget();
+        // return TaskItemWidget();
       },
     );
+  }
+
+  Color _getStatusColor(String status) {
+    if (status == 'New') {
+      return Colors.blue;
+    } else if (status == 'Progress') {
+      return Colors.yellow;
+    } else if (status == 'Cancelled') {
+      return Colors.red;
+    } else {
+      return Colors.green;
+    }
   }
 }

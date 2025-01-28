@@ -1,4 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:task_manager_app/ui/controllers/auth_controller.dart';
+import 'package:task_manager_app/ui/screens/sign_in_screen.dart';
+import 'package:task_manager_app/ui/screens/update_profile_screen.dart';
+import 'package:task_manager_app/ui/utils/app_colors..dart';
 
 class TMAppBar extends StatelessWidget implements PreferredSizeWidget {
   const TMAppBar({
@@ -16,16 +22,18 @@ class TMAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Row(
         children: [
           CircleAvatar(
-            radius: 22,
+            radius: 16,
+            backgroundImage: MemoryImage(
+                base64Decode(AuthController.userModel?.photo ?? '')),
+            onBackgroundImageError: (_, __) => const Icon(Icons.person_outline),
           ),
           const SizedBox(width: 8),
           Expanded(
             child: GestureDetector(
-              onTap: (){
-                if (fromUpdateProfile){
-                  return;
+              onTap: () {
+                if (!fromUpdateProfile) {
+                  Navigator.pushNamed(context, UpdateProfileScreen.name);
                 }
-                Navigator.pushNamed(context, UpdateProfileScreen.name);
               },
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,22 +45,24 @@ class TMAppBar extends StatelessWidget implements PreferredSizeWidget {
                     ),
                   ),
                   Text(
-                    " hannanmiyaji@gmail.com",
-                    style: textTheme.bodyMedium?.copyWith(
-                      color: Colors.white,
-                    ),
+                    AuthController.userModel?.email ?? '',
+                    style: textTheme.bodySmall?.copyWith(color: Colors.white),
                   ),
                 ],
               ),
             ),
           ),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.logout))
+          IconButton(
+              onPressed: () async {
+                await AuthController.clearUserData();
+                Navigator.pushNamedAndRemoveUntil(
+                    context, SignInScreen.name, (predicate) => false);
+              },
+              icon: const Icon(Icons.logout))
         ],
       ),
     );
   }
-
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }
-

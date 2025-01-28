@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:task_manager_app/ui/widgets/screen_background.dart';
 import 'package:task_manager_app/ui/widgets/tm_app_bar.dart';
@@ -10,6 +9,7 @@ class CancelledTaskListScreen extends StatefulWidget {
   State<CancelledTaskListScreen> createState() =>
       _CancelledTaskListScreenState();
 }
+
 
 class _CancelledTaskListScreenState extends State<CancelledTaskListScreen> {
   @override
@@ -88,4 +88,3 @@ class _CancelledTaskListScreenState extends State<CancelledTaskListScreen> {
     );
   }
 }
-

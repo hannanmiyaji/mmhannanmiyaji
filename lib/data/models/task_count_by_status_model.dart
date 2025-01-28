@@ -11,9 +11,11 @@ class TaskCountByStatusModel {
     status = json['status'];
     if (json['data'] != null) {
       taskByStatusList = <TaskCountModel>[];
-      json['data'].forEach((v) {
-        taskByStatusList!.add(TaskCountModel.fromJson(v));
-      });
+      json['data'].forEach(
+        (v) {
+          taskByStatusList!.add(TaskCountModel.fromJson(v));
+        },
+      );
     }
   }
 
@@ -26,6 +28,3 @@ class TaskCountByStatusModel {
     return data;
   }
 }
-
-
-

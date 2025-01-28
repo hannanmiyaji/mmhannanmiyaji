@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:task_manager_app/ui/widgets/screen_background.dart';
 import 'package:task_manager_app/ui/widgets/tm_app_bar.dart';
@@ -10,6 +9,7 @@ class CompletedTaskListScreen extends StatefulWidget {
   State<CompletedTaskListScreen> createState() =>
       _CompletedTaskListScreenState();
 }
+
 
 class _CompletedTaskListScreenState extends State<CompletedTaskListScreen> {
   @override

@@ -1,10 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:task_manager_app/data/models/task_model.dart';
 
 class TaskItemWidget extends StatelessWidget {
   const TaskItemWidget({
-    super.key, required this.taskModel,
+    super.key,
+    required this.taskModel,
   });
 
   final TaskModel taskModel;
@@ -20,28 +20,34 @@ class TaskItemWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(taskModel.description ?? ''),
-            Text('Date:${taskModel.createdData ?? ''}'),
+            Text('Date: ${taskModel.createdData ?? ''}'),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: 22, vertical: 4),
+                  padding: EdgeInsets.symmetric(horizontal: 22, vertical: 4),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
-                    color: Colors.blue,
+                    color: _getStatusColor(taskModel.status ?? 'New'),
                   ),
                   child: Text(
-                    'New',
-                    style: TextStyle(
+                    taskModel.status ?? 'New',
+                    style: const TextStyle(
                       color: Colors.white,
                     ),
                   ),
                 ),
+
                 Row(
                   children: [
-                    IconButton(onPressed: (){}, icon: Icon(Icons.delete),),
-                    IconButton(onPressed: (){}, icon: Icon(Icons.edit),),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.delete),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.edit),
+                    ),
                   ],
                 )
               ],
@@ -51,5 +57,16 @@ class TaskItemWidget extends StatelessWidget {
       ),
     );
   }
-}
 
+  Color _getStatusColor(String status) {
+    if (status == 'New') {
+      return Colors.blue;
+    } else if (status == 'Progress') {
+      return Colors.yellow;
+    } else if (status == 'Cancelled') {
+      return Colors.red;
+    } else {
+      return Colors.green;
+    }
+  }
+}
