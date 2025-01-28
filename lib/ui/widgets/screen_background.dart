@@ -5,7 +5,6 @@ import 'package:task_manager_app/ui/utils/assets_path.dart';
 class ScreenBackground extends StatelessWidget {
   const ScreenBackground({super.key, required this.child});
 
-
   final Widget child;
 
   @override

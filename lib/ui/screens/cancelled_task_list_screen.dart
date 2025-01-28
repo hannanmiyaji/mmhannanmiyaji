@@ -10,7 +10,6 @@ class CancelledTaskListScreen extends StatefulWidget {
       _CancelledTaskListScreenState();
 }
 
-
 class _CancelledTaskListScreenState extends State<CancelledTaskListScreen> {
   @override
   Widget build(BuildContext context) {

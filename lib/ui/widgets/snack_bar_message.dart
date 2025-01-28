@@ -7,5 +7,4 @@ void showSnackBarMessage(BuildContext context, String message,
       content: Text(message),
     ),
   );
-
 }

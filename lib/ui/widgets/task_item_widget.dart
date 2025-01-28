@@ -37,7 +37,6 @@ class TaskItemWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-
                 Row(
                   children: [
                     IconButton(

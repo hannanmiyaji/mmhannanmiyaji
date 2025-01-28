@@ -11,7 +11,6 @@ class AddNewTaskScreen extends StatefulWidget {
   State<AddNewTaskScreen> createState() => _AddNewTaskScreenState();
 }
 
-
 class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
   final TextEditingController _titleTEController = TextEditingController();
   final TextEditingController _descriptionTEController =

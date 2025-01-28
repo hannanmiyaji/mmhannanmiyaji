@@ -59,6 +59,7 @@ class TMAppBar extends StatelessWidget implements PreferredSizeWidget {
                     context, SignInScreen.name, (predicate) => false);
               },
               icon: const Icon(Icons.logout))
+
         ],
       ),
     );
